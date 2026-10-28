@@ -1,0 +1,9 @@
+**
+!dist/extension.js
+!dist/worker.js
+!dist/ng-checkup/package.json
+!images/icon.png
+!package.json
+!README.md
+!CHANGELOG.md
+!LICENSE

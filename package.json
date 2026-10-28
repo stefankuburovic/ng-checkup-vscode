@@ -1,0 +1,133 @@
+{
+  "name": "ng-checkup-vscode",
+  "displayName": "ng-checkup",
+  "description": "ng-checkup findings inline: deprecated APIs, zoneless readiness, signals adoption, type safety and circular dependencies of your Angular codebase in the Problems panel, with the modernization score in the status bar.",
+  "version": "0.1.0",
+  "publisher": "stefankuburovic",
+  "license": "MIT",
+  "author": "Stefan Kuburovic",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#3b5bdb",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/stefankuburovic/ng-checkup#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefankuburovic/ng-checkup-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stefankuburovic/ng-checkup-vscode/issues"
+  },
+  "keywords": [
+    "angular",
+    "modernization",
+    "migration",
+    "zoneless",
+    "signals",
+    "linter",
+    "audit",
+    "nx"
+  ],
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "workspaceContains:angular.json",
+    "workspaceContains:nx.json",
+    "workspaceContains:project.json",
+    "workspaceContains:*/angular.json"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "ng-checkup reads the workspace files and its package metadata; it runs only in trusted workspaces."
+    },
+    "virtualWorkspaces": false
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "ng-checkup.run",
+        "title": "Run",
+        "category": "ng-checkup",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "ng-checkup.openReport",
+        "title": "Open report",
+        "category": "ng-checkup",
+        "icon": "$(preview)"
+      },
+      {
+        "command": "ng-checkup.openReportInBrowser",
+        "title": "Open report in browser",
+        "category": "ng-checkup",
+        "icon": "$(link-external)"
+      }
+    ],
+    "configuration": {
+      "title": "ng-checkup",
+      "properties": {
+        "ng-checkup.registryLookup": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Ask the npm registry for the latest Angular version and for the metadata of installed packages that depend on Angular. Off by default: then nothing leaves the machine and the version check compares against the newest major the bundled ng-checkup knows. `\"offline\": true` in `ng-checkup.config.json` wins over this setting."
+        },
+        "ng-checkup.highSeverity": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "error"
+          ],
+          "default": "warning",
+          "enumDescriptions": [
+            "High findings show as warnings: they are modernization debt, not compile errors.",
+            "High findings show as errors, to match a CI gate that fails on them."
+          ],
+          "description": "How findings of high severity show in the editor. Medium findings are warnings, low ones information."
+        },
+        "ng-checkup.maxExamples": {
+          "type": "number",
+          "default": 1000,
+          "minimum": 1,
+          "description": "How many locations each finding lists. The CLI shows 5 by default; the editor wants all of them."
+        },
+        "ng-checkup.runOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Analyse again after a TypeScript file, a template, package.json, a tsconfig or ng-checkup.config.json is saved."
+        },
+        "ng-checkup.debounceMs": {
+          "type": "number",
+          "default": 1500,
+          "minimum": 0,
+          "description": "How long to wait after the last save before analysing, in milliseconds. Saves during a run are folded into one follow-up run."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "build:production": "node esbuild.mjs --production",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "vscode:prepublish": "npm run typecheck && npm test && npm run build:production",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^4.1.0",
+    "esbuild": "^0.28.2",
+    "ng-checkup": "1.4.1",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.5"
+  }
+}
