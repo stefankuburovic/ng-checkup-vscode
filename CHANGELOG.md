@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+- Bundles ng-checkup 1.5.0: a strict flag that is off (`strictNullChecks`, `noImplicitAny`, `strictTemplates`) shows on the tsconfig line that sets it, following `extends`, instead of on `package.json`.
+
 ## 0.1.0
 
 First release.

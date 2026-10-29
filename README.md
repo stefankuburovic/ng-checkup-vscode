@@ -13,7 +13,7 @@ ng-checkup grades an Angular codebase on how far it is from current Angular: the
 - **Up to date after every save.** Only the files that changed are parsed again, in a worker thread, so typing never waits for the analysis.
 - **Your configuration.** `ng-checkup.config.json` in the workspace root applies here as it does in CI: `ignore`, `only`, `skip` and `offline`.
 
-Findings about the project as a whole, such as an outdated Angular or an end-of-life package, are attached to `package.json`, the same place GitHub code scanning shows them with ng-checkup's SARIF output.
+A strict flag that is off (`strictNullChecks`, `noImplicitAny`, `strictTemplates`) shows on the tsconfig line that sets it, following `extends`. Findings about the project as a whole, such as an outdated Angular or an end-of-life package, are attached to `package.json`, the same place GitHub code scanning shows them with ng-checkup's SARIF output.
 
 ## Requirements
 

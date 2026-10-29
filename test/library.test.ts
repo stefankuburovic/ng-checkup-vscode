@@ -16,6 +16,8 @@ describe('ng-checkup library on the legacy-app fixture', () => {
     expect(overallScore(report)).toBeTypeOf('number');
     expect(entries).toContainEqual(expect.objectContaining({ path: 'src/app/app.component.ts', line: 5, checkId: 'type-safety' }));
     expect(entries.some((entry) => entry.path === PROJECT_FILE && entry.checkId === 'version')).toBe(true);
+    // From ng-checkup 1.5.0 a strict flag that is off sits on the tsconfig line that sets it (`"strict": false`).
+    expect(entries).toContainEqual(expect.objectContaining({ path: 'tsconfig.json', line: 1, checkId: 'type-safety', message: '`strictNullChecks` is off (Type safety)' }));
     expect(entries.every((entry) => !entry.path.startsWith('/') && !entry.path.includes('\\'))).toBe(true);
   });
 });
