@@ -2,7 +2,7 @@
   "name": "ng-checkup-vscode",
   "displayName": "ng-checkup",
   "description": "ng-checkup findings inline: deprecated APIs, zoneless readiness, signals adoption, type safety and circular dependencies of your Angular codebase in the Problems panel, with the modernization score in the status bar.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "stefankuburovic",
   "license": "MIT",
   "author": "Stefan Kuburovic",
@@ -108,6 +108,11 @@
           "default": 1500,
           "minimum": 0,
           "description": "How long to wait after the last save before analysing, in milliseconds. Saves during a run are folded into one follow-up run."
+        },
+        "ng-checkup.attributeSelectors": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Also show directives, and components with an attribute selector (`[appTooltip]`, `button[mat-button]`), that no template matches, and inputs and outputs no template binds: ng-checkup's `--attribute-selectors`. Off by default, since matching attributes is looser than matching tags. `\"attributeSelectors\": true` in `ng-checkup.config.json` turns it on too."
         }
       }
     }
@@ -126,7 +131,7 @@
     "@vscode/test-electron": "^3.1.0",
     "@vscode/vsce": "^4.1.0",
     "esbuild": "^0.28.2",
-    "ng-checkup": "1.5.0",
+    "ng-checkup-cli": "1.6.1",
     "typescript": "~6.0.3",
     "vitest": "^5.0.5"
   }

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+
+- Bundles ng-checkup 1.6.1 (published on npm as `ng-checkup-cli`): files nothing imports, and components and pipes no template uses, show as findings on their own line.
+- New setting `ng-checkup.attributeSelectors` (or `"attributeSelectors": true` in `ng-checkup.config.json`): also directives no template matches, and inputs and outputs no template binds.
+
 ## 0.2.0
 
 - Bundles ng-checkup 1.5.0: a strict flag that is off (`strictNullChecks`, `noImplicitAny`, `strictTemplates`) shows on the tsconfig line that sets it, following `extends`, instead of on `package.json`.

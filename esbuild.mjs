@@ -35,4 +35,4 @@ await build({
   banner: { js: "var __ngCheckupModuleUrl = require('node:url').pathToFileURL(require('node:path').join(__dirname, 'ng-checkup', 'dist', 'index.js')).href;" },
 });
 mkdirSync('dist/ng-checkup', { recursive: true });
-copyFileSync('node_modules/ng-checkup/package.json', 'dist/ng-checkup/package.json');
+copyFileSync('node_modules/ng-checkup-cli/package.json', 'dist/ng-checkup/package.json');

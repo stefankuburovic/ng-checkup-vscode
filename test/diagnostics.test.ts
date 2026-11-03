@@ -1,4 +1,4 @@
-import type { CheckResult, Finding, Report } from 'ng-checkup';
+import type { CheckResult, Finding, Report } from 'ng-checkup-cli';
 import { DOCS_URL, PROJECT_FILE, countByLevel, toDiagnosticEntries } from '../src/diagnostics.js';
 
 /** A check with the given findings and nothing else that the mapping reads. */

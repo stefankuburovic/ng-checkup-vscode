@@ -1,5 +1,5 @@
 import { parentPort } from 'node:worker_threads';
-import { createAnalysisCache, loadConfig, overallScore, renderHtml, runCheckup, type AnalysisCache } from 'ng-checkup';
+import { createAnalysisCache, loadConfig, overallScore, renderHtml, runCheckup, type AnalysisCache } from 'ng-checkup-cli';
 import type { AnalyseRequest, AnalyseResult, WorkerRequest, WorkerResponse } from './protocol.js';
 
 /**
@@ -18,7 +18,8 @@ const caches = new Map<string, AnalysisCache>();
 
 /**
  * One analysis, with `ng-checkup.config.json` applied the way the CLI applies
- * it: `ignore`, `only` and `skip` narrow the report, and `offline: true` in
+ * it: `ignore`, `only` and `skip` narrow the report, `attributeSelectors: true`
+ * turns the attribute-level dead code on as the setting does, and `offline: true` in
  * the file wins over the setting, since a team that wrote it down does not
  * want the registry asked from anyone's editor either.
  *
@@ -35,6 +36,7 @@ async function analyse(request: AnalyseRequest): Promise<AnalyseResult> {
   const report = await runCheckup(request.root, {
     offline: request.offline || config.offline === true,
     maxExamples: request.maxExamples,
+    attributeSelectors: request.attributeSelectors || config.attributeSelectors === true,
     cache,
     ...(config.ignore ? { ignore: config.ignore } : {}),
     ...(config.only ? { only: config.only } : {}),

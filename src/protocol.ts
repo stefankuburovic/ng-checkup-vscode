@@ -1,4 +1,4 @@
-import type { Report } from 'ng-checkup';
+import type { Report } from 'ng-checkup-cli';
 
 /**
  * The messages between the extension and its analysis worker. A separate
@@ -15,6 +15,8 @@ export interface AnalyseRequest {
   /** True unless the user turned the registry lookup on (and the config file does not say offline). */
   offline: boolean;
   maxExamples: number;
+  /** `ng-checkup.attributeSelectors`: also look for directives, inputs and outputs no template uses (or `attributeSelectors: true` in the config file). */
+  attributeSelectors: boolean;
 }
 
 /** Render a report the worker returned earlier as ng-checkup's self-contained HTML page. */

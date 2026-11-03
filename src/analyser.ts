@@ -1,5 +1,5 @@
 import { Worker } from 'node:worker_threads';
-import type { Report } from 'ng-checkup';
+import type { Report } from 'ng-checkup-cli';
 import type { AnalyseResult, WorkerRequest, WorkerResponse } from './protocol.js';
 
 /** `Omit` applied to each member of a union, so the request kinds stay distinct. */
@@ -24,8 +24,8 @@ export class Analyser {
   constructor(private readonly script: string) {}
 
   /** Analyses one root; rejects with the user-facing message of a config error or a crash. */
-  analyse(root: string, offline: boolean, maxExamples: number): Promise<AnalyseResult> {
-    return this.request({ type: 'analyse', root, offline, maxExamples }) as Promise<AnalyseResult>;
+  analyse(root: string, offline: boolean, maxExamples: number, attributeSelectors: boolean): Promise<AnalyseResult> {
+    return this.request({ type: 'analyse', root, offline, maxExamples, attributeSelectors }) as Promise<AnalyseResult>;
   }
 
   /** ng-checkup's HTML report for a report this worker produced. */

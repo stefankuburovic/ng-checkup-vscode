@@ -26,6 +26,7 @@ interface Settings {
   maxExamples: number;
   runOnSave: boolean;
   debounceMs: number;
+  attributeSelectors: boolean;
 }
 
 /** Reads the settings with the defaults `package.json` declares, clamped to sane values. */
@@ -37,6 +38,7 @@ function readSettings(): Settings {
     maxExamples: Math.max(1, config.get<number>('maxExamples', 1000)),
     runOnSave: config.get<boolean>('runOnSave', true),
     debounceMs: Math.max(0, config.get<number>('debounceMs', 1500)),
+    attributeSelectors: config.get<boolean>('attributeSelectors', false),
   };
 }
 
@@ -241,7 +243,7 @@ class Controller implements vscode.Disposable {
     const settings = readSettings();
     const key = state.folder.uri.toString();
     try {
-      const result = await this.analyser.analyse(state.folder.uri.fsPath, !settings.registryLookup, settings.maxExamples);
+      const result = await this.analyser.analyse(state.folder.uri.fsPath, !settings.registryLookup, settings.maxExamples, settings.attributeSelectors);
       if (this.states.get(key) !== state) return;
       state.result = result;
       state.error = undefined;

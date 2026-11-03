@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { createAnalysisCache, overallScore, runCheckup } from 'ng-checkup';
+import { createAnalysisCache, overallScore, runCheckup } from 'ng-checkup-cli';
 import { PROJECT_FILE, toDiagnosticEntries } from '../src/diagnostics.js';
 
 /**

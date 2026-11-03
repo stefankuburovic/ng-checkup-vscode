@@ -10,8 +10,9 @@ ng-checkup grades an Angular codebase on how far it is from current Angular: the
 
 - **Every finding at its file and line**, in the Problems panel and as a squiggle in the editor. The hover explains why it matters and what fixing it takes; the code links to the documentation of its check.
 - **The modernization score** (0 to 100) in the status bar. Click it for the full ng-checkup HTML report beside your code, or open the same page in the browser to print or save it as PDF.
+- **Dead code where it sits.** Files nothing imports, and components and pipes no template uses, show on their own line, so deleting them is one click away. Turn on `ng-checkup.attributeSelectors` to also see directives no template matches, and inputs and outputs no template binds.
 - **Up to date after every save.** Only the files that changed are parsed again, in a worker thread, so typing never waits for the analysis.
-- **Your configuration.** `ng-checkup.config.json` in the workspace root applies here as it does in CI: `ignore`, `only`, `skip` and `offline`.
+- **Your configuration.** `ng-checkup.config.json` in the workspace root applies here as it does in CI: `ignore`, `only`, `skip`, `offline` and `attributeSelectors`.
 
 A strict flag that is off (`strictNullChecks`, `noImplicitAny`, `strictTemplates`) shows on the tsconfig line that sets it, following `extends`. Findings about the project as a whole, such as an outdated Angular or an end-of-life package, are attached to `package.json`, the same place GitHub code scanning shows them with ng-checkup's SARIF output.
 
@@ -42,6 +43,7 @@ Offline by default: no request leaves your machine. With `ng-checkup.registryLoo
 | `ng-checkup.maxExamples` | `1000` | Locations listed per finding. |
 | `ng-checkup.runOnSave` | `true` | Analyse again after a save. |
 | `ng-checkup.debounceMs` | `1500` | Wait after the last save before analysing. |
+| `ng-checkup.attributeSelectors` | `false` | Also show directives no template matches, and inputs and outputs no template binds. |
 
 ## The same report in CI
 

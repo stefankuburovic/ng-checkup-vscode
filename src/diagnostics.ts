@@ -1,4 +1,4 @@
-import type { Finding, Report, Severity } from 'ng-checkup';
+import type { Finding, Report, Severity } from 'ng-checkup-cli';
 
 /**
  * Where each check is documented. The Problems panel turns a diagnostic's
