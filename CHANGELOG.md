@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- Bundles ng-checkup 2.0.0. New findings show where they sit: accessibility defects and missing translation keys in the templates that have them, tests that assert nothing in their spec files, colours written outside the design tokens in the stylesheets, and `.subscribe()` calls nothing ends in their components. Translations and accessibility are never graded, so the status-bar score is the same as with 0.3.0 on the same code.
+
 ## 0.3.0
 
 - Bundles ng-checkup 1.6.1 (published on npm as `ng-checkup-cli`): files nothing imports, and components and pipes no template uses, show as findings on their own line.
