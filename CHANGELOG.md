@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0
+
+- Bundles ng-checkup 2.2.0. In an app that renders on the server, browser globals and native DOM changes in code that runs there show at their lines, as do `ngSkipHydration` and, in the translation files, messages without a translation. None of them is graded, so the status-bar score is the same as before on the same code.
+
 ## 0.5.0
 
 - Bundles ng-checkup 2.1.0. New findings show where they sit: `*ngFor` without `trackBy`, `@for` with `track $index` and method calls in template bindings in the templates that have them, impure pipes on the pipe class, and `moment`, whole `lodash`, `rxjs-compat` or `jquery` on the startup files that import them. None of them is graded, so the status-bar score is the same as before on the same code.

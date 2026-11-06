@@ -1,8 +1,8 @@
 {
   "name": "ng-checkup-vscode",
   "displayName": "ng-checkup",
-  "description": "ng-checkup findings inline: deprecated APIs, zoneless readiness, signals adoption, type safety and circular dependencies of your Angular codebase in the Problems panel, with the modernization score in the status bar.",
-  "version": "0.5.0",
+  "description": "ng-checkup findings inline: upgrade blockers, deprecated APIs, zoneless and signals readiness, template speed, server rendering, accessibility and translations.",
+  "version": "0.6.0",
   "publisher": "stefankuburovic",
   "license": "MIT",
   "author": "Stefan Kuburovic",
@@ -21,6 +21,8 @@
   },
   "keywords": [
     "angular",
+    "accessibility",
+    "ssr",
     "modernization",
     "migration",
     "zoneless",
@@ -131,7 +133,7 @@
     "@vscode/test-electron": "^3.1.0",
     "@vscode/vsce": "^4.1.0",
     "esbuild": "^0.28.2",
-    "ng-checkup-cli": "2.1.0",
+    "ng-checkup-cli": "2.2.0",
     "typescript": "~6.0.3",
     "vitest": "^5.0.5"
   }
