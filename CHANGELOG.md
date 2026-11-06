@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+- Bundles ng-checkup 2.1.0. New findings show where they sit: `*ngFor` without `trackBy`, `@for` with `track $index` and method calls in template bindings in the templates that have them, impure pipes on the pipe class, and `moment`, whole `lodash`, `rxjs-compat` or `jquery` on the startup files that import them. None of them is graded, so the status-bar score is the same as before on the same code.
+
 ## 0.4.0
 
 - Bundles ng-checkup 2.0.0. New findings show where they sit: accessibility defects and missing translation keys in the templates that have them, tests that assert nothing in their spec files, colours written outside the design tokens in the stylesheets, and `.subscribe()` calls nothing ends in their components. Translations and accessibility are never graded, so the status-bar score is the same as with 0.3.0 on the same code.
